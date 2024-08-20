@@ -1,0 +1,9 @@
+generatorName: python-flask
+outputDir: gen
+inputSpec: openapi.yaml
+apiDocs: true
+modelDocs: true
+apiTests: true
+modelTests: true
+packageName: similarity-service
+packageVersion: 0.1.0
