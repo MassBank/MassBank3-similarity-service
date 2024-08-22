@@ -13,7 +13,7 @@ paths:
   /version:
     get:
       summary: Get the version string of the implementation.
-      x-openapi-router-controller: cosine_impl.cosine_impl_controller
+      x-openapi-router-controller: similarity_service_impl.similarity_service_impl_controller
       operationId: version_get
       responses:
         "200":
@@ -26,7 +26,7 @@ paths:
   /similarity:
     post:
       summary: Create a new similarity calculation.
-      x-openapi-router-controller: cosine_impl.cosine_impl_controller
+      x-openapi-router-controller: similarity_service_impl.similarity_service_impl_controller
       operationId: similarity_post
       requestBody:
         description: a similarity job
@@ -117,12 +117,26 @@ components:
             - MSBNK-IPB_Halle-PB001342
             - MSBNK-IPB_Halle-PB001343
 
+    similarity_fn:
+      description: a supported similarity function
+      title: similarity_fn
+      type: object
+      properties:
+        similarity_fn:
+          type: string
+          enum:
+            - cosine
+          example: cosine
+      required:
+        - similarity_fn
+
     similarity_calculation:
       description: a similarity calculation
       title: similarity_calculation
       allOf:
         - $ref: "#/components/schemas/peak_list"
         - $ref: "#/components/schemas/reference_spectra_list"
+        - $ref: "#/components/schemas/similarity_fn"
 
     similarity_score:
       description: the similarity score to a reference spectrum
