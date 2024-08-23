@@ -8,35 +8,39 @@ the [Connexion](https://github.com/zalando/connexion) library on top of Flask.
 Tested on Python 3.12
 
 ## Configuration
-This microservice is configured with environment variables. The following variables and
-default values are used:
-```
-DB_PORT = 5432
-DB_USER = "massbank3"
-DB_PASSWORD = "massbank3password"
-DB_NAME = "massbank3"
-DB_HOST = "localhost"
+This microservice is configured with environment variables. The reference
+spectra are initialized from a local file. The file location needs to be
+configured in the environment variable `MSP`. For MassBank we configure the
+service with the latest MassBank-data release in msp format.
+```bash
+wget https://github.com/MassBank/MassBank-data/releases/latest/download/MassBank_NIST.msp
+export MSP="./MassBank_NIST.msp"
 ```
 
 ## Usage
-To run the server, please generate the server code, install the requirements 
+To run the server, install the requirements, generate the server code 
 and start the server like this:
 ```bash
-bash generate.sh
 pip3 install -r requirements.txt
+bash generate.sh
 PYTHONPATH=gen python3 -m similarity_service_impl
 ```
 You can find the swagger ui at http://localhost:8080/ui/ and the
 OpenAPI definition at http://localhost:8080/openapi.json in your browser.
 
 ## Running with Docker
-
-To run the server on a Docker container, please execute the following from the root directory:
+To run the server in a Docker container,  execute the following commands:
 
 ```bash
 # building the image
-docker build -t openapi_server .
+docker build -t massbank3-similarity-service .
+
+# download reference data
+wget https://github.com/MassBank/MassBank-data/releases/latest/download/MassBank_NIST.msp
 
 # starting up a container
-docker run -p 8080:8080 openapi_server
+docker run -p 8080:8080 \
+-v $(pwd)/MassBank_NIST.msp:/MassBank_NIST.msp \
+-e MSP='/MassBank_NIST.msp' \
+massbank3-similarity-service
 ```
