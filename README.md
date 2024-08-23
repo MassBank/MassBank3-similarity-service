@@ -44,3 +44,15 @@ docker run -p 8080:8080 \
 -e MSP='/MassBank_NIST.msp' \
 massbank3-similarity-service
 ```
+Prebuild docker images are available from [ipbhalle/massbank3-similarity-service](https://hub.docker.com/r/ipbhalle/massbank3-similarity-service).  
+The fastest way to get things running is:
+```bash
+# download reference data
+wget https://github.com/MassBank/MassBank-data/releases/latest/download/MassBank_NIST.msp
+
+# starting up a container
+docker run -p 8080:8080 \
+-v $(pwd)/MassBank_NIST.msp:/MassBank_NIST.msp \
+-e MSP='/MassBank_NIST.msp' \
+ipbhalle/massbank3-similarity-service:latest
+```
