@@ -5,9 +5,6 @@ Flask < 2.3
 waitress >= 3.0.0
 
 matchms >= 0.27.0
-psycopg[pool] >= 3.0.0
 numpy
 
-pytest~=8.2.0
-pytest-postgresql~=6.0.0
 Flask-Testing==0.8.1
