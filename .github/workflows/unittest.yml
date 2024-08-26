@@ -30,7 +30,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r test-requirements.txt
-          ./generate.sh
+          bash generate.sh
 
       - name: Run tests
         run: |
