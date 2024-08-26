@@ -100,6 +100,8 @@ components:
               intensity: 5884.210
             - mz: 611.161
               intensity: 6700.000
+      required:
+        - peak_list
 
     reference_spectra_list:
       description: the reference spectra list, list of ACCESSION strings
@@ -127,8 +129,6 @@ components:
           enum:
             - cosine
           example: cosine
-      required:
-        - similarity_fn
 
     similarity_calculation:
       description: a similarity calculation
