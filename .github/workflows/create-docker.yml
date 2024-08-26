@@ -3,22 +3,14 @@ name: Create Docker Container
 on:
   push:
     branches:
-      - 'main'
-      - 'dev'
+      - main
+      - dev
     tags:
-      - 'v*'
+      - v*
 
 jobs:
   build-and-push-images:
     runs-on: ubuntu-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - dockerfile: ./similarity-service-cosine/Dockerfile
-            image: ipbhalle/massbank3-similarity-service-cosine
-            context: ./similarity-service-cosine
 
     steps:
       - name: Checkout
