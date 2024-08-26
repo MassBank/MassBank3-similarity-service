@@ -49,14 +49,7 @@ def similarity_post(similarity_calculation):  # noqa: E501
     if connexion.request.is_json:
         request = SimilarityCalculation.from_dict(similarity_calculation)
 
-        # try:
         load_spectra()
-        # except psycopg.DatabaseError as e:
-        #     return connexion.problem(
-        #         title="Database Error",
-        #         detail=str(e),
-        #         status=500,
-        #     )
 
         mz, intensities = zip(*[(peak.mz, peak.intensity) for peak in request.peak_list])
 
@@ -89,7 +82,7 @@ def version_get():  # noqa: E501
 
     :rtype: Union[str, Tuple[str, int], Tuple[str, int, Dict[str, str]]
     """
-    return 'similarity similarity 0.1.0'
+    return 'similarity service 0.1'
 
 
 def handle_psycopg_database_error(error):
