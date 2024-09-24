@@ -76,7 +76,8 @@ def similarity_post(similarity_calculation):  # noqa: E501
                 status=400,
             )
 
-        logger.debug("Got %s reference spectra.", len(request.reference_spectra_list))
+        if request.reference_spectra_list is not None:
+            logger.debug("Got %s reference spectra.", len(request.reference_spectra_list))
         references = spectra
         if request.reference_spectra_list:
             references = [s for s in references if s.metadata['spectrum_id'] in request.reference_spectra_list]
