@@ -16,6 +16,11 @@ service with the latest MassBank-data release in msp format.
 wget https://github.com/MassBank/MassBank-data/releases/latest/download/MassBank_NIST.msp
 export MSP="./MassBank_NIST.msp"
 ```
+A more verbose logging can be activated by setting environment variable VERBOSE
+to "true".
+```bash
+export VERBOSE=true
+```
 
 ## Usage
 To run the server, install the requirements, generate the server code 
