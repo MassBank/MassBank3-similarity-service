@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+title: "MassBank-similarity-api"
+version: "1.7-matchms-0.30.2"
+date-released: "2025-08-22"
+authors:
+  - name: "MassBank Consortium"
+    website: "https://github.com/MassBank"
+    email: "massbank@massbank.eu"
+repository-code: "https://github.com/MassBank/MassBank-similarity-api"
+license: "GPL-3.0-or-later"
+url: "https://massbank.eu/"
+message: "If you use MassBank-similarity-api in your research, please cite this project using the citation below."

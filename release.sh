@@ -10,25 +10,30 @@ fi
 
 RELEASE_VERSION="$1"
 NEXT_SNAPSHOT_VERSION="$2"
+DATE=$(date +%Y-%m-%d)
 
-# 1. Auf dev: Release-Version setzen und committen
+# 1. set version in dev and commit
 git checkout dev
 echo "__version__ = \"$RELEASE_VERSION\"" > similarity_api_impl/version.py
 git add similarity_api_impl/version.py
+#set version and date in CITATION.cff
+sed -i "s/^version: .*/version: \"$RELEASE_VERSION\"/" CITATION.cff
+sed -i "s/^date-released: .*/date-released: \"${DATE}\"/" CITATION.cff
+git add CITATION.cff
 git commit -m "Release version $RELEASE_VERSION"
 git push origin dev
 
-# 2. Nach main mergen
+# 2. merge to main
 git checkout main
 git merge dev
 git push origin main
 
-# 3. Release taggen und auf GitHub veröffentlichen
+# 3. tag release and publish
 git tag -a "v$RELEASE_VERSION" -m "Release version $RELEASE_VERSION"
 git push origin "v$RELEASE_VERSION"
 gh release create "v$RELEASE_VERSION" --title "Release $RELEASE_VERSION" --notes "Release $RELEASE_VERSION"
 
-# 4. Zurück zu dev und nächste SNAPSHOT-Version setzen
+# 4. go back to dev and set next SNAPSHOT version
 git checkout dev
 echo "__version__ = \"$NEXT_SNAPSHOT_VERSION\"" > similarity_api_impl/version.py
 git add similarity_api_impl/version.py
