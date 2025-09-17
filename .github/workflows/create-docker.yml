@@ -32,7 +32,7 @@ jobs:
             # tag event
             type=ref,event=tag
             # set latest tag for main branch and tags
-            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/') }}
+            type=raw,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
             # set dev tag for dev branch
             type=raw,value=dev,enable=${{ github.ref == 'refs/heads/dev' }}
 
