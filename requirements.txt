@@ -1,4 +1,4 @@
-connexion[swagger-ui] == 2.14.2
+connexion[swagger-ui] == 3.3.0
 python-dateutil
 Flask < 2.3
 waitress == 3.0.2
