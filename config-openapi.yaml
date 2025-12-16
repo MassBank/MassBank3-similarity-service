@@ -1,6 +1,7 @@
 generatorName: python-flask
 outputDir: gen
 inputSpec: openapi.yaml
+featureCORS: true
 apiDocs: true
 modelDocs: true
 apiTests: true

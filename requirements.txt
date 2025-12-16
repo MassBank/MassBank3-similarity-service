@@ -1,6 +1,7 @@
 connexion[swagger-ui] == 2.14.2
 python-dateutil
 Flask < 2.3
+flask-cors
 waitress == 3.0.2
 
 matchms == 0.31.0

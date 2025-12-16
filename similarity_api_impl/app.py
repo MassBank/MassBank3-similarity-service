@@ -5,6 +5,7 @@ import sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '../gen'))
 
 import connexion
+from flask_cors import CORS
 import logging
 import threading
 from similarity_api import encoder
@@ -25,6 +26,7 @@ app.add_api('openapi.yaml',
             base_path=CONTEXT_PATH,
             arguments={'title': 'Similarity score api for MassBank'},
             pythonic_params=True)
+CORS(app.app)
 
 # Create and start a thread to run spectra_loader.load_spectra()
 init_thread = threading.Thread(target=spectra_loader.load_spectra)
