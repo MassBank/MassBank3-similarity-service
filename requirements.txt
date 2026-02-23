@@ -1,6 +1,6 @@
 connexion[swagger-ui] == 2.14.2
 python-dateutil
-Flask < 2.3
+Flask < 3.2
 flask-cors
 waitress == 3.0.2
 
